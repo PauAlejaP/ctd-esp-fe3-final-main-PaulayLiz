@@ -1,15 +1,33 @@
-import { createContext } from "react";
+import { createContext, useContext, useReducer } from "react";
 
-export const initialState = {theme: "", data: []}
+const AppContext = createContext();
+let initialState = { theme: false, CustomCard: [], favs: [] };
 
-export const ContextGlobal = createContext(undefined);
-
-export const ContextProvider = ({ children }) => {
-  //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
-
-  return (
-    <ContextGlobal.Provider value={{}}>
-      {children}
-    </ContextGlobal.Provider>
-  );
+const dentistaReducer = (state, action) => {
+  switch (action.type) {
+    case "ADD_FAVORITOS":
+      return { ...state, favs: [...state.favs, action.payload] };
+    case "REMOVE_FAVORITOS":
+      let newFavoritesList = state.favs.filter(
+        (dentista) => dentista.id !== action.payload
+      );
+      return { ...state, favs: newFavoritesList };
+    case "REMOVE_ALL":
+      return { ...state, favs: [newFavoritesList[0]] };
+    case "TOGGLE":
+      return { ...state, theme: !state.theme };
+    default:
+      return state;
+  }
 };
+
+export const DentistaContext = ({ children }) => {
+  const [state, dispatch] = useReducer(dentistaReducer, initialState);
+
+  let datos = { state, dispatch };
+
+  return <AppContext.Provider value={datos}>{children}</AppContext.Provider>;
+};
+export const useAppContext = () => useContext(AppContext);
+
+   
