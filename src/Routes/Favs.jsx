@@ -1,45 +1,32 @@
+
 import { useAppContext } from "../Components/utils/global.context";
-import { useEffect } from "react";
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Favs = () => {
   const { state, dispatch } = useAppContext();
-
-  useEffect(() => {
-    const storedFavoritos = localStorage.getItem("favs");
-    if (storedFavoritos) {
-      const parsedFavoritos = JSON.parse(storedFavoritos);
-      dispatch({ type: "ADD_FAVORITOS", payload: parsedFavoritos });
-    }
-  }, [dispatch]);
-
-  useEffect(() => {
-    localStorage.setItem("favs", JSON.stringify(state.favs));
-  }, [state.favs, dispatch]);
-
-  const eliminarFavoritos = (id) => {
-    dispatch({ type: "REMOVE_FAVORITOS", payload: id });
-  };
+  console.log(state);
 
   return (
     <div>
-      <h2>Favoritos</h2>
-      <ul>
-        {state.favs.map((dentista) => (
-          <>
-            <li key={dentista.id}>
-              {" "}
-              <h2>{dentista.name} </h2>
-            </li>
-            <div>
-              <button onClick={() => removeFavorito(dentista.id)}>
-                Eliminar
-              </button>
-            </div>
-          </>
-        ))}
-      </ul>
+      {state.favs.map((favorite) => {
+        return (
+          <div key={favorite.id}>
+            <h1>{favorite.name}</h1>
+            <button
+              onClick={() =>
+                dispatch({ type: "REMOVE_BY_ID", payload: favorite.id })
+              }
+            >
+              Quitar de favoritos
+            </button>
+          </div>
+        );
+      })}
+      <h1>Favorites</h1>
+      <button onClick={() => dispatch({ type: "REMOVE_ALL" })}>
+        Limpiar todos los favoritos
+      </button>
     </div>
   );
 };

@@ -28,6 +28,8 @@ export const DentistaContext = ({ children }) => {
 
   return <AppContext.Provider value={datos}>{children}</AppContext.Provider>;
 };
+
+
 export const useAppContext = () => useContext(AppContext);
 
    
