@@ -11,17 +11,17 @@ import "../Components/utils/CustomCard.css";
 import { Link } from "react-router-dom";
 import Detail from "../Routes/Detail";
 import { useAppContext } from "./utils/global.context";
+import { getDentista } from "../api/Dentista";
 
 const CustomCard = ({ name, username, id }) => {
   const { state, dispatch } = useAppContext();
-  const [customCard, setCustomCart] = useState([]);
 
   const addFav = () => {
     const favCard = { id, name, username };
     const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     favorites.push(favCard);
     localStorage.setItem("favorites", JSON.stringify(favorites));
-    console.log(alert("esta agregado"));
+    console.log(alert("esta agregado"), favCard);
     //const isDuplicate = state.favs.some((favorites) => favorites.id === id);
     //if (!isDuplicate) {
     //const favCard = { id, name, username };
@@ -36,9 +36,11 @@ const CustomCard = ({ name, username, id }) => {
   const [docs, setDocs] = useState([]);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.json())
-      .then((res) => setDocs(res));
+    const getData = async () => {
+      let dentistData = await getDentista();
+      setDocs(dentistData);
+    };
+    getData();
   }, []);
 
   return (
