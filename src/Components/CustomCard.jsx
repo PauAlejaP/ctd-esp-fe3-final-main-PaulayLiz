@@ -7,27 +7,28 @@ import {
   CardMedia,
   Button,
 } from "@mui/material";
-import "../Components/CustomCard.css";
+import "../Components/utils/CustomCard.css";
 import { Link } from "react-router-dom";
 import Detail from "../Routes/Detail";
 import { useAppContext } from "./utils/global.context";
 
 const CustomCard = ({ name, username, id }) => {
   const { state, dispatch } = useAppContext();
+  const [customCard, setCustomCart] = useState([]);
 
   const addFav = () => {
     const favCard = { id, name, username };
     const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     favorites.push(favCard);
     localStorage.setItem("favorites", JSON.stringify(favorites));
-
-    const isDuplicate = state.favs.some((favorites) => favorites.id === id);
-    if (!isDuplicate) {
-      const favCard = { id, name, username };
-      dispatch({ type: "ADD_FAVORITOS", payload: favCard });
-    } else {
-      alert("Ya agregaste este Dentista a Favoritos");
-    }
+    console.log(alert("esta agregado"));
+    //const isDuplicate = state.favs.some((favorites) => favorites.id === id);
+    //if (!isDuplicate) {
+    //const favCard = { id, name, username };
+    //dispatch({ type: "ADD_FAVORITOS", payload: favCard });
+    //} else {
+    //alert("Ya agregaste este Dentista a Favoritos");
+    // }
   };
   const getAvatarUrl = (userId) => {
     return `https://i.pravatar.cc/150?img=${userId}`;
