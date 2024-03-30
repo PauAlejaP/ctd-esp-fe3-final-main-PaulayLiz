@@ -30,7 +30,7 @@ const CustomCard = () => {
       dispatch({ type: "ADD_FAVORITOS", payload: favCard });
       alert(`¡${name} ha sido agregado a tus favoritos!`);
     } else {
-      console.log(alert("Dentista ya está en favoritos"));
+      alert(`${name} ya está en favoritos`);
     }
   };
 
