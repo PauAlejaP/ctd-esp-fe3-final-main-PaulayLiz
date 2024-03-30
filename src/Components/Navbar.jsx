@@ -34,9 +34,9 @@ const Navbar = () => {
             </Link>
           </li>
         </ul>
-        <button onClick={() => dispatch({ type: "TOGGLE" })}>
+        <Button onClick={() => dispatch({ type: "TOGGLE" })}>
           Cambiar Tema
-        </button>
+        </Button>
       </div>
     </nav>
   );

@@ -13,8 +13,8 @@ const dentistaReducer = (state, action) => {
       );
       return { ...state, favs: newFavoritesList };
     case "REMOVE_ALL":
-      return { ...state, favs: [newFavoritesList[0]] };
-    case "TOGGLE":
+      return { ...state, favs: [] };
+    case "TOGGLE_THEME":
       return { ...state, theme: !state.theme };
     default:
       return state;

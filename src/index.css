@@ -16,12 +16,64 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.table-container {
+  display: inline-block;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 5px #b2ccdb solid;
+  border-radius: 30px;
+  padding: 20px;
+  margin-top: 20px;
+  font-weight: 100;
+}
+
+.table-row {
+  display: inline-block;
+  flex-direction: column;
+}
+
+.table-cell {
+  display: inline-block;
+  margin-right: 20px; 
+}
+
+
+.table-cell h3 {
+  margin-bottom: 5px;
+
+}
+
+/* Estilos para los valores */
+.table-cell span {
+  font-weight:lighter;
+}
 .favButton{
   background-color: rgba(136, 136, 136, 0.116);
   padding: 10px;
-  border: none;
-  width: 100%;
+  border-radius: 30px;
+  width: fit-content;
+  height:fit-content;
   cursor: pointer;
+ 
+ 
+}
+
+.facDocs{
+  gap: 30px;
+  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  
+}
+
+.favInfo{
+ 
+  flex-wrap: wrap;
+  justify-content: space-around;
+ 
 }
 
 h1{
