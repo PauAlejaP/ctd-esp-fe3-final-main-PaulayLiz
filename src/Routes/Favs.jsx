@@ -1,33 +1,64 @@
 
 import { useAppContext } from "../Components/utils/global.context";
+import { Card, CardMedia, Typography,CardContent, Button, CardActionArea } from "@mui/material";
+
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
+
 const Favs = () => {
   const { state, dispatch } = useAppContext();
-  console.log(state);
-
   return (
+<>
+    <h1>Favoritos </h1>
+
+   
     <div>
-      {state.favs.map((favorite) => {
-        return (
-          <div key={favorite.id}>
-            <h1>{favorite.name}</h1>
-            <button
-              onClick={() =>
-                dispatch({ type: "REMOVE_BY_ID", payload: favorite.id })
-              }
-            >
-              Quitar de favoritos
-            </button>
-          </div>
-        );
-      })}
-      <h1>Favorites</h1>
-      <button onClick={() => dispatch({ type: "REMOVE_ALL" })}>
-        Limpiar todos los favoritos
-      </button>
+        
+
+      {state.favs.map((favorite) => (
+        <div key={favorite.id}>
+         
+          <Card  sx={{ maxWidth: 345, margin: "20px auto" }}>
+            <CardActionArea className="facDocs" >
+              <CardMedia
+                component="img"
+                height="140"
+                image="/public/images/doctor.jpg"           
+                   alt="Doctor"
+              />
+              <CardContent className="facDocs">
+                <Typography  gutterBottom variant="h5" component="div">
+                  {favorite.name}
+                </Typography>
+               
+              </CardContent>
+            </CardActionArea>
+            <Button
+            variant="outlined"
+            onClick={() => dispatch({ type: "REMOVE_FAVORITOS", payload: favorite.id })}
+          >
+            Eliminar de favoritos
+          </Button>
+          </Card>
+         
+      
+          
+        </div>
+      ))}
+      
     </div>
+    
+    {state.favs.length > 0 && (
+        <Button
+          className="favButton"
+          variant="outlined"
+          onClick={() => dispatch({ type: "REMOVE_ALL" })}
+        >
+          Limpiar todos los favoritos
+        </Button>
+    )}
+    </>
   );
 };
 

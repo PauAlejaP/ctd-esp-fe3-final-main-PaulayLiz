@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { useAppContext } from "./utils/global.context";
 import { getDentista } from "../api/Dentista";
 
+
 const CustomCard = () => {
   const { state, dispatch } = useAppContext();
   const [docs, setDocs] = useState([]);
@@ -46,7 +47,7 @@ const CustomCard = () => {
             component="img"
             alt="avatar"
             height="200"
-            image={getAvatarUrl(elemento.id)}
+            image="/public/images/doctor.jpg"
           />
           <CardContent>
             <Typography
