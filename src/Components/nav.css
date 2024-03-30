@@ -1,0 +1,9 @@
+.body-dark {
+  background-color: rgba(82, 101, 106, 0.746);
+  color: white;
+}
+
+.body-light {
+  background-color: #8a9dcc;
+  color: white;
+}

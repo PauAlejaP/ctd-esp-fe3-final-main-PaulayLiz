@@ -16,7 +16,7 @@ const dentistaReducer = (state, action) => {
       return { ...state, favs: [] };
     case "TOGGLE_THEME":
       return { ...state, theme: !state.theme };
-    default:
+          default:
       return state;
   }
 };
@@ -29,7 +29,4 @@ export const DentistaContext = ({ children }) => {
   return <AppContext.Provider value={datos}>{children}</AppContext.Provider>;
 };
 
-
 export const useAppContext = () => useContext(AppContext);
-
-   

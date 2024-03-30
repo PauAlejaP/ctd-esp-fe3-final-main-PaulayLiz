@@ -72,7 +72,7 @@ const Form = () => {
         )}
         {formSubmitted && !Object.keys(errors).length && (
           <Typography variant="body1" color="primary" align="center">
-            Gracias {values.nombre}, te contactaremos cuando antes vía mail
+            Gracias {values.nombre}, te contactaremos cuanto antes vía mail
           </Typography>
         )}
         <Button type="submit" variant="contained">

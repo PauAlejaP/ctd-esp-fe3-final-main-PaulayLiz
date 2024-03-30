@@ -5,6 +5,8 @@ import Favs from "./Routes/Favs";
 import Layout from "./Components/layout/Layout";
 import Detail from "./Routes/Detail";
 import { DentistaContext } from "./Components/utils/global.context";
+import "./index.css";
+
 function App() {
   return (
     <div className="App">

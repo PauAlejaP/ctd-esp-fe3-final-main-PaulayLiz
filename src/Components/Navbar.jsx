@@ -1,44 +1,39 @@
 import React from "react";
-import "./utils/Navbar.css";
-import { Button } from "@mui/material";
+import { Button, ThemeProvider } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useAppContext } from "./utils/global.context";
+import "./nav.css";
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Navbar = () => {
   const { state, dispatch } = useAppContext();
+  console.log(state)
+
+
 
   return (
-    <nav>
-      <div
-        className={
-          state.tema ? "containerNavbar-dark" : "contaninerNavbar-light"
-        }
-      >
+      <div  className={state.theme ? "body-dark" : "body-light"}>
+      <nav>
         <img src="/public/images/logo.jpg" alt="logo" />
         <ul>
-          <li>
-            <Link to="/">
+             <Link to="/">
               <Button>Home</Button>
             </Link>
-          </li>
-          <li>
             <Link to="/contact">
               <Button>Contacto</Button>
-            </Link>
-          </li>
-          <li>
+                            </Link>
             <Link to="/favs">
               <Button>Favoritos</Button>
             </Link>
-          </li>
+          
         </ul>
-        <Button onClick={() => dispatch({ type: "TOGGLE" })}>
-          Cambiar Tema
-        </Button>
+          
+            <Button onClick={() => dispatch({type: "TOGGLE_THEME"})}>Cambiar Tema</Button>
+          
+      </nav>
       </div>
-    </nav>
+    
   );
 };
 
