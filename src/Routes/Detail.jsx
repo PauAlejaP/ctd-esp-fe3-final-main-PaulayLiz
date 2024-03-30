@@ -22,13 +22,16 @@ const Detail = () => {
 
   if (!docSelected) return <p>Cargando</p>;
   return (
-    <>
-      <h1>Detail Dentist id {docSelected.id}</h1>
-      <h2>Nombre: {docSelected.name}</h2>
-      <h2>Email: {docSelected.email}</h2>
-      <h2>Telefono: {docSelected.phone}</h2>
-      <h2>Web: {docSelected.website}</h2>
-    </>
+   
+      <div class="table-container">
+  <div class="table-row table-header">
+    <div class="table-cell"><h3>Id del odontologo: {docSelected.id}</h3></div>
+    <div class="table-cell"><h3>Nombre: {docSelected.name}</h3></div>
+    <div class="table-cell"><h3>Email: {docSelected.email}</h3></div>
+    <div class="table-cell"><h3>Telefono: {docSelected.phone}</h3></div>
+    <div class="table-cell"><h3>Sitio Web: {docSelected.website}</h3></div>
+  </div>
+   </div>
   );
 };
 export default Detail;

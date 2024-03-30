@@ -13,21 +13,21 @@ const Favs = () => {
     <h1>Favoritos </h1>
 
    
-    <div>
+    <div className="facDocs">
         
 
       {state.favs.map((favorite) => (
         <div key={favorite.id}>
          
           <Card  sx={{ maxWidth: 345, margin: "20px auto" }}>
-            <CardActionArea className="facDocs" >
+            <CardActionArea >
               <CardMedia
                 component="img"
                 height="140"
                 image="/public/images/doctor.jpg"           
                    alt="Doctor"
               />
-              <CardContent className="facDocs">
+              <CardContent className="favInfo" >
                 <Typography  gutterBottom variant="h5" component="div">
                   {favorite.name}
                 </Typography>
